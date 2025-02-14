@@ -52,7 +52,7 @@
         margin-bottom: 0;
     }
     article {
-        font-size: 1rem;
+        font-size: 1.5rem;
     }
     footer nav {
         height: fit-content;
@@ -71,7 +71,7 @@
         font-size: 1rem;
     }
     .experience-sub-title {
-        font-size: 1.25rem;
+        font-size: 1.5rem;
     }
     .logo {
         font-size: 1.5rem;
@@ -87,10 +87,10 @@
         justify-content: center;
     }
     .section__text__p2 {
-        font-size: 1.25rem;
+        font-size: 1.5rem;
     }
     .title {
-        font-size: 2rem;
+        font-size: 2.25rem;
     }
     .text-container {
         text-align: justify;
