@@ -15,24 +15,27 @@ function iconShuffle(containerSelector) {
     let animationFrames = [];
 
     function startAnimation() {
-        icons.forEach((icon, index) => {
-            let angle = Math.random() * Math.PI * 6;
-            const speed = Math.random() * (0.1 - 0.04) + 0.04;
-            const amplitude = Math.random() * (18 - 12) + 12;
+    icons.forEach((icon, index) => {
+        let angle = Math.random() * Math.PI * 2; // Random starting angle
+        const speed = 0.01 + Math.random() * 0.03; // Slightly different speeds for each icon
+        const radius = Math.random() * (12 - 8) + 8; // Orbit size variation
+        const waveAmplitude = Math.random() * (15 - 10) + 10; // Left-right sway range
 
-            function animate() {
-                angle += speed;
-                const yOffset = Math.sin(angle) * amplitude;
-                const xOffset = Math.cos(angle) * amplitude
-                icon.style.transform = `translate(${yOffset}px, ${xOffset}px)`;
+        function animate() {
+            angle += speed;
 
-                const frameId = requestAnimationFrame(animate);
-                animationFrames[index] = frameId;
-            }
+            const xOffset = Math.cos(angle) * radius + Math.sin(angle * 1.5) * waveAmplitude; // Orbit + Wave
+            const yOffset = Math.sin(angle) * radius; // Circular motion
 
-            animate();
-        });
-    }
+            icon.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+
+            animationFrames[index] = requestAnimationFrame(animate);
+        }
+
+        animate();
+    });
+}
+
 
     function stopAnimation() {
         animationFrames.forEach(frameId => cancelAnimationFrame(frameId));
