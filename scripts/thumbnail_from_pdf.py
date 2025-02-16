@@ -1,8 +1,8 @@
 from pdf2image import convert_from_path
 import os
 
-pdf_dir = "./static/certificates/"
-output_dir = "./static/certificate_thumbnails/"
+pdf_dir = "../static/certificates/"
+output_dir = "../static/certificate_thumbnails/"
 os.makedirs(output_dir, exist_ok=True)
 
 for pdf_file in os.listdir(pdf_dir):
