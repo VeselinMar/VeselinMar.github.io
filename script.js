@@ -14,6 +14,7 @@ function iconShuffle(containerSelector) {
     const icons = container.querySelectorAll(".icon");
     let animationFrames = [];
 
+    // function start animation
     function startAnimation() {
     icons.forEach((icon, index) => {
         let angle = Math.random() * Math.PI * 2; // Random starting angle
@@ -36,7 +37,7 @@ function iconShuffle(containerSelector) {
     });
 }
 
-
+    // function stop animation
     function stopAnimation() {
         animationFrames.forEach(frameId => cancelAnimationFrame(frameId));
         animationFrames = []; // Clear stored frames
@@ -53,4 +54,22 @@ function iconShuffle(containerSelector) {
 
 document.addEventListener("DOMContentLoaded", function () {
     iconShuffle(".shuffle-icons"); // Apply only to specific containers
+});
+
+// horizontal scroll certificates
+document.addEventListener("DOMContentLoaded", function () {
+    const carousel = document.querySelector(".experience-details-container .carousel");
+    const prevBtn = document.querySelector(".experience-details-container .carousel-prev");
+    const nextBtn = document.querySelector(".experience-details-container .carousel-next");
+
+    let scrollAmount = 0;
+    let articleWidth = document.querySelector(".experience-details-container .carousel article").offsetWidth + 32; // 280px width + 2rem gap
+
+    nextBtn.addEventListener("click", function () {
+        carousel.scrollBy({ left: articleWidth, behavior: "smooth" });
+    });
+
+    prevBtn.addEventListener("click", function () {
+        carousel.scrollBy({ left: -articleWidth, behavior: "smooth" });
+    });
 });
