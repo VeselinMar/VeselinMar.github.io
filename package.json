@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "vite build && gh-pages -d dist"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -27,18 +28,6 @@
     "postcss": "^8.4.39",
     "tailwindcss": "^3.4.4",
     "vite": "^5.3.1"
-  },
-  "main": "postcss.config.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/HowtoWebDev/simple-portfolio-starter-code.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/HowtoWebDev/simple-portfolio-starter-code/issues"
-  },
-  "homepage": "https://github.com/HowtoWebDev/simple-portfolio-starter-code#readme",
-  "description": ""
+  }
+  
 }
