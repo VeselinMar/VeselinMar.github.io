@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.3.0"
@@ -26,5 +27,18 @@
     "postcss": "^8.4.39",
     "tailwindcss": "^3.4.4",
     "vite": "^5.3.1"
-  }
+  },
+  "main": "postcss.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HowtoWebDev/simple-portfolio-starter-code.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HowtoWebDev/simple-portfolio-starter-code/issues"
+  },
+  "homepage": "https://github.com/HowtoWebDev/simple-portfolio-starter-code#readme",
+  "description": ""
 }
