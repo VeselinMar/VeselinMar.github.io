@@ -1,3 +1,17 @@
+// wake up project sites
+const urlsToPing = [
+    "https://mama-to-be.onrender.com",
+];
+
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        urlsToPing.forEach(url => {
+            fetch(url, {mode: "no-cors"})
+            .catch(err => console.log("ping failed", url, err));
+        });
+    }, 1000 * (i + 1));
+});
+
 // menu expand function
 function toggleMenu() {
     const menu = document.querySelector(".menu-links");
