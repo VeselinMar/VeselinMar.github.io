@@ -9,7 +9,7 @@ window.addEventListener("load", () => {
             fetch(url, {mode: "no-cors"})
             .catch(err => console.log("ping failed", url, err));
         });
-    }, 1000 * (i + 1));
+    }, 1000);
 });
 
 // menu expand function
