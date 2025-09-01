@@ -448,6 +448,14 @@ article {
     height: auto;
 }
 
+.project-description {
+  font-size: 1rem;
+  color: #555;
+  margin: 0 1rem 1.5rem 1rem;
+  line-height: 1.5;
+  text-align: left;
+}
+
 .project-title {
     margin: 1rem;
     color: black;
@@ -486,12 +494,47 @@ article {
     margin: 1rem;
 }
 
+.more-projects-link {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.more-projects-link .btn {
+    padding: 0.8rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.more-projects-link .btn:hover {
+    background-color: rgb(53, 53, 53);
+    color: white;
+    border-color: rgb(53, 53, 53);
+    cursor: pointer;
+}
+
 .contact-info-container p {
     font-size: larger;
 }
 
 .contact-icon {
     cursor: default;
+}
+
+/* Image Editor */
+.image-editor-gallery {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.editor-img {
+    width: 30%;
+    max-width: 150px;
+    height: auto;
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* FOOTER */
