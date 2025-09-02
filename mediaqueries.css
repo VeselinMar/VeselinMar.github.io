@@ -52,6 +52,10 @@
     .experience-details-container .carousel-container .carousel-next {
         right: 5px;
     }
+      .projects-grid, .about-containers {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+  }
 
 }
 
@@ -170,5 +174,19 @@
 
     .experience-details-container .carousel-container .carousel-next {
         right: 5px;
+    }
+    .projects-grid,
+    .about-containers {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .details-container {
+        padding: 1rem;
+    }
+
+    .project-img {
+        width: 100%;
+        height: auto;
     }
 }

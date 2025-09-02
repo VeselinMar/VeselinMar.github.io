@@ -494,6 +494,13 @@ article {
     margin: 1rem;
 }
 
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  padding: 2rem;
+}
+
 .more-projects-link {
     text-align: center;
     margin-top: 2rem;
