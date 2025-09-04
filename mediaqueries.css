@@ -96,8 +96,39 @@
     }
 }
 
-@media screen and (max-width: 760px) {
-    #contact,
+@media screen and (max-width: 768px) {
+    .experience-details-container .carousel-container {
+        max-width: 90vw;
+    }
+
+    .experience-details-container .carousel-container .carousel-nav {
+        font-size: 1.5rem;
+        padding: 10px 15px;
+    }
+
+    .experience-details-container .carousel-container .carousel-prev {
+        left: 5px;
+    }
+
+    .experience-details-container .carousel-container .carousel-next {
+        right: 5px;
+    }
+    .projects-grid,
+    .about-containers {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .details-container {
+        padding: 1rem;
+    }
+
+    .project-img {
+        width: 100%;
+        height: auto;
+    }
+
+        #contact,
     footer {
         height: 20vh;
     }
@@ -155,38 +186,5 @@
     }
     .shuffle-icons .icon {
         width: 4vh;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .experience-details-container .carousel-container {
-        max-width: 90vw; /* Adjust container width */
-    }
-
-    .experience-details-container .carousel-container .carousel-nav {
-        font-size: 1.5rem;
-        padding: 10px 15px;
-    }
-
-    .experience-details-container .carousel-container .carousel-prev {
-        left: 5px;
-    }
-
-    .experience-details-container .carousel-container .carousel-next {
-        right: 5px;
-    }
-    .projects-grid,
-    .about-containers {
-        grid-template-columns: 1fr;
-        gap: 1.25rem;
-    }
-
-    .details-container {
-        padding: 1rem;
-    }
-
-    .project-img {
-        width: 100%;
-        height: auto;
     }
 }

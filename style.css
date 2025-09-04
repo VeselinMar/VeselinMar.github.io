@@ -502,13 +502,14 @@ article {
 }
 
 .more-projects-link {
+    font-size: x-large;
     text-align: center;
     margin-top: 2rem;
 }
 
 .more-projects-link .btn {
     padding: 0.8rem 1.5rem;
-    font-weight: 600;
+    font-weight: 800;
     transition: all 0.3s ease;
 }
 
@@ -517,6 +518,7 @@ article {
     color: white;
     border-color: rgb(53, 53, 53);
     cursor: pointer;
+    text-decoration: none;
 }
 
 .contact-info-container p {

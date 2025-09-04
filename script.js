@@ -1,8 +1,10 @@
 // wake up project sites
 const urlsToPing = [
     "https://mama-to-be.onrender.com",
+    "https://tournamentmanager.onrender.com",
 ];
 
+// ping function
 window.addEventListener("load", () => {
     setTimeout(() => {
         urlsToPing.forEach(url => {
@@ -77,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const nextBtn = document.querySelector(".experience-details-container .carousel-next");
 
     let scrollAmount = 0;
-    let articleWidth = document.querySelector(".experience-details-container .carousel article").offsetWidth + 32; // 280px width + 2rem gap
+    let articleWidth = document.querySelector(".experience-details-container .carousel article").offsetWidth + 32;
 
     nextBtn.addEventListener("click", function () {
         carousel.scrollBy({ left: articleWidth, behavior: "smooth" });
@@ -86,4 +88,22 @@ document.addEventListener("DOMContentLoaded", function () {
     prevBtn.addEventListener("click", function () {
         carousel.scrollBy({ left: -articleWidth, behavior: "smooth" });
     });
+});
+
+
+// blinking more projects button
+document.addEventListener("DOMContentLoaded", function() {
+    const button = document.querySelector('.more-projects-link .btn');
+
+    if (button) {
+        let isOriginalColor = true;
+        setInterval(() => {
+            if (isOriginalColor) {
+                button.style.backgroundColor = 'crimson';
+            } else {
+                button.style.backgroundColor = 'darkblue';
+            }
+            isOriginalColor = !isOriginalColor;
+        }, 1000);
+    }
 });
