@@ -18,12 +18,20 @@ jobs:
           curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             https://api.github.com/repos/${{ github.repository }}/traffic/views \
             -o stats/tmp.json
-          
+
+          # Check if .views exists
+          views_exist=$(jq '.views != null' stats/tmp.json)
+          if [ "$views_exist" != "true" ]; then
+            echo "No traffic data available yet."
+            exit 0
+          fi
+
           if [ ! -f stats/traffic_log.csv ]; then
             echo "date,views,uniques" > stats/traffic_log.csv
+            # First run → import all available 14 days
             jq -r '.views[] | [.timestamp[0:10], .count, .uniques] | @csv' stats/tmp.json >> stats/traffic_log.csv
-            
           else
+            # Normal run → append most recent day only if not already logged
             last_logged_date=$(tail -n 1 stats/traffic_log.csv | cut -d',' -f1)
             new_date=$(jq -r '.views[-1].timestamp[0:10]' stats/tmp.json)
 
