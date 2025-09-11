@@ -1,0 +1,36 @@
+name: Fetch Traffic Stats
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  traffic:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Fetch traffic data
+        run: |
+          mkdir -p stats
+          curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            https://api.github.com/repos/${{ github.repository }}/traffic/views \
+            -o stats/tmp.json
+          
+          today=$(date -u +%Y-%m-%d)
+          jq ".views[-1]" stats/tmp.json | jq --arg date "$today" '. + {date: $date}' > stats/today.json
+
+          if [ ! -f stats/traffic_log.csv ]; then
+            echo "date,views,uniques" > stats/traffic_log.csv
+          fi
+          jq -r '[.date, .count, .uniques] | @csv' stats/today.json >> stats/traffic_log.csv
+
+
+      - name: Commit traffic report
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Log daily traffic stats"
+          branch: main
+          file_pattern: stats/traffic_log.csv
