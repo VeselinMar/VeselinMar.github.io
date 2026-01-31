@@ -259,12 +259,12 @@
                 <img
                 src="./static/projects/TM-Timetable.png"
                 alt="Timetable"
-                class="project-img"
+                class="tournament-img"
                 >
                 <img
                 src="./static/projects/TM-Leaderboard.png"
                 alt="Leaderboard"
-                class="project-img"
+                class="tournament-img"
                 >
                 <p class="project-description">
                 TournamentManager is a web application built to automate the organization and execution of small-scale football tournaments. The project originated from an annual competition where match results were entered manually into a basic scoring tool, and final rankings, top scorers, and standings were calculated by hand after the event — a process that took significant time and was prone to errors.
@@ -284,6 +284,7 @@
                 <p class="project-tech">
                 Tech: Python · Django · PostgreSQL · Azure Blob Storage · HTML · CSS · JavaScript · Testing
                 </p>
+                <br>
                 <div class="btn-container">
                 <a href="https://tournamentmanager.onrender.com" target="_blank" rel="noopener noreferrer">
                     <button class="btn btn-color-2 project-btn">Try it out</button>
@@ -305,9 +306,22 @@
                         class="project-img"
                     >
                     <p class="project-description">
-                        A simple Flask project created using Flask, PostgreSQL, sqlAlchemy + Bootstrap and some vanilla JS for the frontend. User can clone repo,
-                        docker-compose up locally and access app at port 5000. Keep track of the positions he has applied for during job hunting and scrapes for relevant recent positions.
-                        . On the image app is populated with some sample data.
+                    ApplicationJobTracker is a personal job-application management tool designed to centralize and streamline the job-hunting process. The project was built to avoid duplicate applications, track application statuses, and keep structured notes for interview preparation, while also providing visibility into new relevant job postings.
+                    </p>
+                    <p class="project-description">
+                    The application allows users to track companies, positions, application dates, statuses, and custom notes, with search and filtering capabilities based on company name, role, or application state. This makes it easier to manage follow-ups, prepare for upcoming interviews, and maintain a clear overview during an active job search.
+                    </p>
+                    <p class="project-description">
+                    In addition to manual tracking, the system includes a web-scraping component built with BeautifulSoup that retrieves new junior Python job postings from karriere.at. Scraping can be triggered automatically once per day or manually on demand. Retrieved postings are displayed temporarily, allowing the user to discard irrelevant listings, which are stored in a local blacklist to prevent repeated scraping of unwanted entries.
+                    </p>
+                    <p class="project-description">
+                    The backend is implemented with Flask and SQLAlchemy, backed by PostgreSQL, and fully containerized using Docker. Flask serves a built React frontend, which is currently being extended with an additional view to track time spent on projects and tasks. The application is designed as a local-only tool without authentication, emphasizing separation of concerns between scraping logic, application state, and user interface.
+                    </p>
+                    <p class="project-description">
+                    ApplicationJobTracker is actively used during my job search and serves as an ongoing learning project. It reinforced best practices around data modeling, containerized development workflows, and clean separation between backend services, automation tasks, and frontend presentation.
+                    </p>
+                    <p class="project-tech">
+                    Tech: Python · Flask · SQLAlchemy · PostgreSQL · Docker · React · BeautifulSoup
                     </p>
                     <div class="btn-container">
                     <a href="https://github.com/VeselinMar/job_search_manager" target="_blank" rel="noopener noreferrer">
