@@ -339,11 +339,22 @@
                 class="project-img"
                 >
                 <p class="project-description">
-                Mama-To-Be is a personal web application created for my wife, designed to serve as a dedicated blog with additional interactive features. 
-                It provides a comfortable space to write, share experiences, and manage content easily. Articles are created using a user-friendly TinyMCE editor, offering a word-processor-like writing experience.
-
-                The application uses Django for backend logic and HTML/CSS/JavaScript with Bootstrap for the frontend. 
-                Originally built with PostgreSQL, deployment constraints on Render led to a switch to SQLite, with persistent data seeded from a JSON file during startup to keep hosting cost-free and maintenance simple.
+                Mom-To-Be is a live, production web application developed as a commissioned project for a non-technical primary user. It began as a personal blogging platform and has evolved into a content-driven site with extensible features, including a cookbook and forum components currently under active development. The project places strong emphasis on usability, maintainability, and adapting to continuously evolving requirements.
+                </p>
+                <p class="project-description">
+                The application supports full content management workflows, including creating, editing, drafting, and publishing articles with categories, tags, and media uploads. Content is authored using a TinyMCE-based editor and is fully multilingual, allowing posts to be published in multiple languages. Comments are planned as an upcoming feature. Registration is intentionally kept simple and is handled on-site, while Django’s admin interface is customized and used for moderation and maintenance tasks.
+                </p>
+                <p class="project-description">
+                Architecturally, the project is structured into multiple Django apps handling articles, profiles, shared components, food-related content, and a forum module. Each article is linked to an author profile and includes automatic timestamping and language-aware slug generation. Django signals are used to create related user profiles on registration, while middleware and libraries such as TinyMCE, django-parler, and modeltranslation support rich content editing and multilingual functionality. The project uses a mix of class-based and function-based views, leveraging each where most appropriate for clarity, authorization handling, and reduced overhead.
+                </p>
+                <p class="project-description">
+                The application is deployed on Render and currently runs on the free tier with a dedicated PostgreSQL instance. Earlier iterations relied on SQLite with JSON-based data seeding as a workaround for free-tier limitations, an approach that was later removed once persistent database support became available. The project includes a CI/CD pipeline in which changes to the development branch trigger automated tests and, upon success, are automatically deployed to production via a Docker container.
+                </p>
+                <p class="project-description">
+                Mom-To-Be is developed in close collaboration with its primary user, resulting in frequent iterations, feature revisions, and UI adjustments based on real feedback. The project has been a key learning experience in requirement gathering, architectural planning, and accepting change as a core part of software engineering. It represents my first end-to-end commissioned project and significantly shaped how I plan, design, and evolve applications before and during implementation.
+                </p>
+                <p class="project-tech">
+                Tech: Python · Django · PostgreSQL · Docker · CI/CD · TinyMCE · django-parler · modeltranslation · HTML · CSS · JavaScript
                 </p>
                 <div class="btn-container">
                 <a href="https://mom-to-be.at" target="_blank" rel="noopener noreferrer">
