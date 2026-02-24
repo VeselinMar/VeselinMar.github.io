@@ -195,11 +195,14 @@ section {
 }
 
 .section__text {
+    margin-top: 3em;
+    margin-bottom: 2em;
     align-self: center;
     text-align: center;
 }
 
 .section__text p {
+    margin-bottom: 1.5em;
     font-weight: 600;
 }
 
@@ -208,6 +211,7 @@ section {
 }
 
 .title {
+    margin-bottom: 0.7em;
     font-size: 2.6rem;
     text-align: center;
 }
@@ -215,7 +219,8 @@ section {
 #socials-container {
     display: flex;
     justify-content: center;
-    margin-top: 1rem;
+    margin-top: 1.6rem;
+    margin-bottom: 1.6em;
     gap: 1rem;
 }
 
