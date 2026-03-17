@@ -1,405 +1,500 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="mediaqueries.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Veselin Martinov — Python Backend Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <nav id="desktop-nav">
-        <div class="logo">Veselin Martinov</div>
-        <div>
-            <ul class="nav-links">
-                <li><a href="#experience">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-    <nav id="hamburger-nav">
-        <div class="logo">Veselin Martinov</div>
-        <div class="hamburger-menu">
-            <div class="hamburger-icon" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div class="menu-links">
-                <li><a href="#experience" onclick="toggleMenu()">About</a></li>
-                <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-                <li><a href="#contact" onclick="toggleMenu()">Contacts</a></li>
-            </div>
-        </div>
-    </nav>
-    <section id="profile">
-        <div class="section__pic-container">
-            <img src="./static/profile-image.png" alt="profile picture" />
-        </div>
-        <div class="section__text">
-            <p class="section__text__p1">Hello, I am</p>
-            <h1 class="title">Veselin Martinov</h1>
-            <p class="section__text__p1">Python Backend Developer | Python • Django • Docker • Linux • PostgreSQL • Azure</p>
-            <p class="section__text__p2">Building production-ready, containerized web applications</p>
-            <div class="btn-container">
-                <button class="btn btn-color-2"
-                        onclick="window.open('./static/lebenslauf.pdf')">
-                    Download CV
-                </button>
-                <button class="btn btn-color-1" onclick="location.href='./#contact'">
-                    Contact
-                </button>
-            </div>
-            <div id="socials-container">
-                <img src="./static/github.png"
-                     alt="github picture"
-                     class="icon"
-                     onclick=location.href="https://github.com/VeselinMar">
-                <img src="./static/linkedin.png"
-                     alt="linkedin picture"
-                     class="icon"
-                     onclick=location.href="https://www.linkedin.com/in/veselin-martinov-b6439b17b/">
-                <img src="./static/instagram.png"
-                     alt="github picture"
-                     class="icon"
-                     onclick=location.href="https://www.instagram.com/veselinmartinov/">
-                <img src="./static/facebook.png"
-                     alt="github picture"
-                     class="icon"
-                     onclick=location.href="https://www.facebook.com/veselin.martinov1/">
-            </div>
-            <p id="bio">
-                I am a Python Software Engineer with a strong focus on backend development, infrastructure, and building production-ready web applications. My main expertise lies in Django, PostgreSQL, Linux, and Docker, with a practical DevOps mindset shaped by deploying and maintaining real-world projects.
-            </p>
 
-            <p id="bio">
-                Before transitioning fully into software engineering, I worked in high-pressure catering environments where I led on-site teams of up to 30 people. These roles required fast decision-making, clear communication across multiple stakeholders, and full responsibility for successful outcomes — skills that now strongly influence how I approach engineering problems and ownership in technical projects.
-            </p>
-
-            <p id="bio">
-                In 2025, I completed a professional certification in Software Engineering with Python, deepening my knowledge in advanced Django, Python, and DevOps practices. I enjoy working in small teams, tackling ambiguous problems, and iterating quickly. I am now seeking a Python Backend or Software Engineer role where I can grow long-term within a company and contribute to meaningful, well-built systems.
-            </p>
-            <p id="bio">
-                Tech focus: Python · Django · PostgreSQL · Docker · Linux · CI/CD
-            </p>
-
-        </div>
-    </section>
-    <section id="experience">
-        <div class="experience-details-container">
-            <div class="about-containers">
-                <div class="details-container">
-                    <div class="article-container shuffle-icons">
-                        <article>
-                            <img src="./static/logos/html5.png"
-                                 alt="HTML"
-                                 class="icon"
-                                 />
-                        </article>
-                        <article>
-                            <img src="./static/logos/css.png"
-                                 alt="CSS"
-                                 class="icon"
-                                 />
-                        </article>
-                        <article>
-                            <img src="./static/logos/django.png"
-                                 alt="Django"
-                                 class="icon"
-                                 />
-                        </article>
-                        <article>
-                            <img src="./static/logos/bootstrap.webp"
-                                 alt="Bootstrap"
-                                 class="icon"
-                                 />
-                        </article>
-                        <article>
-                            <img src="./static/logos/js.webp"
-                                 alt="JavaScript"
-                                 class="icon"
-                                 />
-                        </article>
-                        <article>
-                            <img src="./static/logos/git.png"
-                                 alt="Git"
-                                 class="icon"
-                                 />
-                        </article>
-                        <article>
-                            <img src="./static/logos/sqlAlchemy.Default"
-                                 alt="sqlAlchemy"
-                                 class="icon"
-                                 />
-                        </article>
-                        <article>
-                            <img src="./static/logos/pgsql.png"
-                                 alt="pgsql"
-                                 class="icon"
-                                 />
-                        </article>
-                        <article>
-                            <img src="./static/logos/linux.jpeg"
-                                 alt="Linux"
-                                 class="icon"
-                                 />
-                        </article>
-                        <article>
-                            <img src="./static/logos/redis.png"
-                                 alt="Redis"
-                                 class="icon"
-                                 />
-                        </article>
-                        <article>
-                            <img src="./static/logos/nginx.svg"
-                                 alt="Nginx"
-                                 class="icon"
-                                 />
-                        </article>
-                        <article>
-                            <img src="./static/logos/python.png"
-                                 alt="Python"
-                                 class="icon"
-                                 />
-                        </article>
-                        <article>
-                            <img src="./static/logos/docker.png"
-                                 alt="Docker"
-                                 class="icon"
-                                 />
-                        </article>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="experience-details-container">
-            <div class="about-containers">
-                <div class="details-container">
-                    <div class="carousel-container">
-                        <button class="carousel-nav carousel-prev">&#10094;</button>
-                        <div class="carousel">
-                            <article>
-                                <a href="./static/certificates/softunidiplom.pdf" target="_blank">
-                                    <img src="./static/certificate_thumbnails/softunidiplom.png" alt="Diplom for Software Engineer with Python" class="icon"/>
-                                </a>
-                            </article>
-                            <article>
-                                <a href="./static/certificates/python-basics.pdf" target="_blank">
-                                    <img src="./static/certificate_thumbnails/python-basics.png" alt="Python Basics Certificate" class="icon"/>
-                                </a>
-                            </article>
-                            <article>
-                                <a href="./static/certificates/python-fundamentals.pdf" target="_blank">
-                                    <img src="./static/certificate_thumbnails/python-fundamentals.png" alt="Python Fundamentals Certificate" class="icon"/>
-                                </a>
-                            </article>
-                            <article>
-                                <a href="./static/certificates/python-advanced.pdf" target="_blank">
-                                    <img src="./static/certificate_thumbnails/python-advanced.png" alt="Python Advanced Certificate" class="icon"/>
-                                </a>
-                            </article>
-                            <article>
-                                <a href="./static/certificates/js-front-end.pdf" target="_blank">
-                                    <img src="./static/certificate_thumbnails/js-front-end.png" alt="JS Frontend Certificate" class="icon"/>
-                                </a>
-                            </article>
-                            <article>
-                                <a href="./static/certificates/postgresql.pdf" target="_blank">
-                                    <img src="./static/certificate_thumbnails/postgresql.png" alt="PostgreSQL Certificate" class="icon"/>
-                                </a>
-                            </article>
-                            <article>
-                                <a href="./static/certificates/python-oop.pdf" target="_blank">
-                                    <img src="./static/certificate_thumbnails/python-oop.png" alt="Python OOP Certificate" class="icon"/>
-                                </a>
-                            </article>
-                            <article>
-                                <a href="./static/certificates/python-orm.pdf" target="_blank">
-                                    <img src="./static/certificate_thumbnails/python-orm.png" alt="Python ORM Certificate" class="icon"/>
-                                </a>
-                            </article>
-                            <article>
-                                <a href="./static/certificates/django-basics.pdf" target="_blank">
-                                    <img src="./static/certificate_thumbnails/django-basics.png" alt="Django Basics Certificate" class="icon"/>
-                                </a>
-                            </article>
-                            <article>
-                                <a href="./static/certificates/django-advanced.pdf" target="_blank">
-                                    <img src="./static/certificate_thumbnails/django-advanced.png" alt="Django Advanced Certificate" class="icon"/>
-                                </a>
-                            </article>
-                            <article>
-                                <a href="./static/certificates/devops.pdf" target="_blank">
-                                    <img src="./static/certificate_thumbnails/se-devops.jpeg" alt="DevOps SE Certificate" class="icon"/>
-                                </a>
-                            </article>
-                            <article>
-                                <a href="./static/certificates/containers-cloud.pdf" target="_blank">
-                                    <img src="./static/certificate_thumbnails/cc.jpeg" alt="Containers and Cloud Certificate" class="icon"/>
-                                </a>
-                            </article>
-                        </div>
-                        <button class="carousel-nav carousel-next">&#10095;</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="projects">
-        <p class="section__text__p1">Browse My</p>
-        <h1 class="title">Projects</h1>
-        <div class="experience-details-container">
-            <div class="about-containers">
-            <!-- Project 1: Tournament Manager -->
-            <div class="details-container color-container">
-            <div class="article-container">
-                <h2 class="experience-sub-title project-title">TournamentManager</h2>
-                <img
-                src="./static/projects/TM-Timetable.png"
-                alt="Timetable"
-                class="tournament-img"
-                >
-                <img
-                src="./static/projects/TM-Leaderboard.png"
-                alt="Leaderboard"
-                class="tournament-img"
-                >
-                <p class="project-description">
-                TournamentManager is a web application built to automate the organization and execution of small-scale football tournaments. The project originated from an annual competition where match results were entered manually into a basic scoring tool, and final rankings, top scorers, and standings were calculated by hand after the event — a process that took significant time and was prone to errors.
-                </p>
-                <p class="project-description">
-                The application supports round-robin tournaments with teams playing parallel matches on multiple fields. Organizers can create tournaments through a guided workflow, automatically generate match schedules, enter scores, and track standings in real time. A dedicated public view allows players and spectators to follow match results and rankings live, while sensitive information such as top-scorer tracking remains restricted to organizers.
-                </p>
-                <p class="project-description">
-                On the backend, the system handles score validation, automatic point calculation, tie-breaking rules, and dynamic ranking updates after each match. The data model was designed to reflect real-world constraints such as unknown player identities at registration time, duplicate names across teams, and event-based tracking for goals and cards. Match events are stored per player and team, with business logic to correctly handle edge cases like own goals and automatic red cards after two yellow cards.
-                </p>
-                <p class="project-description">
-                The application is built with Django and PostgreSQL and is deployed publicly. Tournament-specific sponsor banners are uploaded and served from Azure Blob Storage, providing visibility for sponsors throughout the event. The project includes unit tests for core models as well as integration tests to ensure data consistency and correct ranking calculations under real tournament conditions.
-                </p>
-                <p class="project-description">
-                TournamentManager is used annually by several hundred users during live events. The project significantly reduced administrative overhead for organizers and provided a more transparent and engaging experience for participants and spectators. It was a key learning experience in data modeling, UX decisions under time pressure, and building maintainable backend systems for real-world usage.
-                </p>
-                <p class="project-tech">
-                Tech: Python · Django · PostgreSQL · Azure Blob Storage · HTML · CSS · JavaScript · Testing
-                </p>
-                <br>
-                <div class="btn-container">
-                <a href="https://tournamentmanager.onrender.com" target="_blank" rel="noopener noreferrer">
-                    <button class="btn btn-color-2 project-btn">Try it out</button>
-                </a>
-                </div>
-                <div class="btn-container">
-                <a href="https://github.com/VeselinMar/TournamentManager" target="_blank" rel="noopener noreferrer">
-                    <button class="btn btn-color-2 project-btn">Github</button>
-                </a>
-                </div>
-            </div>
-            <!-- Project 2: Application Job Tracker -->
-            <div class="details-container color-container">
-                <div class="article-container">
-                    <h2 class="experience-sub-title project-title">ApplicationJobTracker</h2>
-                    <img
-                        src="./static/projects/job_hunter.png"
-                        alt="Project 2"
-                        class="project-img"
-                    >
-                    <p class="project-description">
-                    ApplicationJobTracker is a personal job-application management tool designed to centralize and streamline the job-hunting process. The project was built to avoid duplicate applications, track application statuses, and keep structured notes for interview preparation, while also providing visibility into new relevant job postings.
-                    </p>
-                    <p class="project-description">
-                    The application allows users to track companies, positions, application dates, statuses, and custom notes, with search and filtering capabilities based on company name, role, or application state. This makes it easier to manage follow-ups, prepare for upcoming interviews, and maintain a clear overview during an active job search.
-                    </p>
-                    <p class="project-description">
-                    In addition to manual tracking, the system includes a web-scraping component built with BeautifulSoup that retrieves new junior Python job postings from karriere.at. Scraping can be triggered automatically once per day or manually on demand. Retrieved postings are displayed temporarily, allowing the user to discard irrelevant listings, which are stored in a local blacklist to prevent repeated scraping of unwanted entries.
-                    </p>
-                    <p class="project-description">
-                    The backend is implemented with Flask and SQLAlchemy, backed by PostgreSQL, and fully containerized using Docker. Flask serves a built React frontend, which is currently being extended with an additional view to track time spent on projects and tasks. The application is designed as a local-only tool without authentication, emphasizing separation of concerns between scraping logic, application state, and user interface.
-                    </p>
-                    <p class="project-description">
-                    ApplicationJobTracker is actively used during my job search and serves as an ongoing learning project. It reinforced best practices around data modeling, containerized development workflows, and clean separation between backend services, automation tasks, and frontend presentation.
-                    </p>
-                    <p class="project-tech">
-                    Tech: Python · Flask · SQLAlchemy · PostgreSQL · Docker · React · BeautifulSoup
-                    </p>
-                    <div class="btn-container">
-                    <a href="https://github.com/VeselinMar/job_search_manager" target="_blank" rel="noopener noreferrer">
-                        <button class="btn btn-color-2 project-btn">Github</button>
-                    </a>
-                    </div>
-                </div>
-            </div>
-            <!-- Project 3: Mom-To-Be -->
-            <div class="article-container">
-                <h2 class="experience-sub-title project-title">Mom-To-Be</h2>
-                <img
-                src="./static/projects/MtB-Home-wide.png"
-                alt="MtB-Home-wide"
-                class="project-img"
-                >
-                <p class="project-description">
-                Mom-To-Be is a live, production web application developed as a commissioned project for a non-technical primary user. It began as a personal blogging platform and has evolved into a content-driven site with extensible features, including a cookbook and forum components currently under active development. The project places strong emphasis on usability, maintainability, and adapting to continuously evolving requirements.
-                </p>
-                <p class="project-description">
-                The application supports full content management workflows, including creating, editing, drafting, and publishing articles with categories, tags, and media uploads. Content is authored using a TinyMCE-based editor and is fully multilingual, allowing posts to be published in multiple languages. Comments are planned as an upcoming feature. Registration is intentionally kept simple and is handled on-site, while Django’s admin interface is customized and used for moderation and maintenance tasks.
-                </p>
-                <p class="project-description">
-                Architecturally, the project is structured into multiple Django apps handling articles, profiles, shared components, food-related content, and a forum module. Each article is linked to an author profile and includes automatic timestamping and language-aware slug generation. Django signals are used to create related user profiles on registration, while middleware and libraries such as TinyMCE, django-parler, and modeltranslation support rich content editing and multilingual functionality. The project uses a mix of class-based and function-based views, leveraging each where most appropriate for clarity, authorization handling, and reduced overhead.
-                </p>
-                <p class="project-description">
-                The application is deployed on Render and currently runs on the free tier with a dedicated PostgreSQL instance. Earlier iterations relied on SQLite with JSON-based data seeding as a workaround for free-tier limitations, an approach that was later removed once persistent database support became available. The project includes a CI/CD pipeline in which changes to the development branch trigger automated tests and, upon success, are automatically deployed to production via a Docker container.
-                </p>
-                <p class="project-description">
-                Mom-To-Be is developed in close collaboration with its primary user, resulting in frequent iterations, feature revisions, and UI adjustments based on real feedback. The project has been a key learning experience in requirement gathering, architectural planning, and accepting change as a core part of software engineering. It represents my first end-to-end commissioned project and significantly shaped how I plan, design, and evolve applications before and during implementation.
-                </p>
-                <p class="project-tech">
-                Tech: Python · Django · PostgreSQL · Docker · CI/CD · TinyMCE · django-parler · modeltranslation · HTML · CSS · JavaScript
-                </p>
-                <div class="btn-container">
-                <a href="https://mom-to-be.at" target="_blank" rel="noopener noreferrer">
-                    <button class="btn btn-color-2 project-btn">Try it out</button>
-                </a>
-                </div>
-                <div class="btn-container">
-                <a href="https://github.com/VeselinMar/Mama-To-Be" target="_blank" rel="noopener noreferrer">
-                    <button class="btn btn-color-2 project-btn">Github</button>
-                </a>
-                </div>
-            </div>
-        </div>
-        </div>
-        </div>
-    </section>
-    <div class="more-projects-link">
-        <a href="projects.html" class="btn btn-color-2">Additional Projects</a>
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <span class="nav-logo">VM<span class="accent">.</span></span>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certifications">Certs</a></li>
+        <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <section id="contact">
-        <p class="section__text__p1">Get In Touch</p>
-        <h1 class="title">Contact Me</h1>
-        <div class="contact-info-upper-container">
-            <div class="contact-info-container">
-                <img
-                    src="./static/email.jpg"
-                    alt="mail icon"
-                    class="icon contact-icon"
-                >
-                <p><a href="mailto:veselin.martinov@gmail.com">veselin.martinov@gmail.com</a></p>
-            </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#about" class="mobile-link">About</a></li>
+      <li><a href="#projects" class="mobile-link">Projects</a></li>
+      <li><a href="#certifications" class="mobile-link">Certs</a></li>
+      <li><a href="#contact" class="mobile-link">Hire Me</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-grid-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-label">
+        <span class="blink">▍</span> Available for work · Vienna, AT
+      </div>
+      <h1 class="hero-name">
+        <span class="line-reveal" style="--delay:0.1s">VESELIN</span>
+        <span class="line-reveal" style="--delay:0.2s">MARTINOV</span>
+      </h1>
+      <div class="hero-role line-reveal" style="--delay:0.35s">
+        Python Backend Developer
+      </div>
+      <p class="hero-stack line-reveal" style="--delay:0.45s">
+        <span class="tag">Python</span>
+        <span class="tag">Django</span>
+        <span class="tag">Docker</span>
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">Linux</span>
+        <span class="tag">Azure</span>
+      </p>
+      <div class="hero-actions line-reveal" style="--delay:0.55s">
+        <a href="#projects" class="btn-primary">View Projects</a>
+        <a href="#contact" class="btn-ghost">Get In Touch</a>
+      </div>
+    </div>
+    <div class="hero-terminal line-reveal" style="--delay:0.6s">
+      <div class="terminal-bar">
+        <span class="t-dot red"></span>
+        <span class="t-dot yellow"></span>
+        <span class="t-dot green"></span>
+        <span class="t-title">veselin@dev ~ bash</span>
+      </div>
+      <div class="terminal-body" id="terminal"></div>
+    </div>
+    <div class="hero-scroll">
+      <span>scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="section-label">01 / About</div>
+      <div class="about-grid">
+        <div class="about-text">
+          <h2 class="section-title">Backend engineer.<br>Former team lead.<br>Problem solver.</h2>
+          <p>I'm a Python Software Engineer focused on building production-ready backend systems with Django, PostgreSQL, and Docker. My applications are live, used by real users, and built to last.</p>
+          <p>Before engineering, I led teams of up to 30 people in high-pressure environments — which means I bring clear communication, ownership, and fast decision-making to every project I join.</p>
+          <p>In 2025 I completed a full professional certification in Software Engineering with Python. I'm now seeking a backend role where I can grow long-term and contribute to systems that matter.</p>
+          <a href="https://veselinmar.github.io/static/lebenslauf.pdf" target="_blank" class="btn-outline">Download CV →</a>
         </div>
-    </section>
-    <footer>
-        <nav>
-            <div class="nav-links-container">
-                <ul class="nav-links">
-                    <li><a href="#experience">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
+        <div class="about-skills">
+          <div class="skills-block">
+            <div class="skills-category">Core Stack</div>
+            <div class="skill-bars">
+              <div class="skill-bar-item">
+                <span>Python / Django</span>
+                <div class="bar"><div class="bar-fill" style="--w:92%"></div></div>
+              </div>
+              <div class="skill-bar-item">
+                <span>PostgreSQL</span>
+                <div class="bar"><div class="bar-fill" style="--w:85%"></div></div>
+              </div>
+              <div class="skill-bar-item">
+                <span>Docker / Linux</span>
+                <div class="bar"><div class="bar-fill" style="--w:80%"></div></div>
+              </div>
+              <div class="skill-bar-item">
+                <span>CI/CD / Azure</span>
+                <div class="bar"><div class="bar-fill" style="--w:72%"></div></div>
+              </div>
+              <div class="skill-bar-item">
+                <span>Flask / SQLAlchemy</span>
+                <div class="bar"><div class="bar-fill" style="--w:75%"></div></div>
+              </div>
+              <div class="skill-bar-item">
+                <span>JS / React</span>
+                <div class="bar"><div class="bar-fill" style="--w:60%"></div></div>
+              </div>
             </div>
-        </nav>
-        <p>Copyright &#169; 2025 Veselin Martinov</p>
-    </footer>
-<script src="./script.js"></script>
+          </div>
+          <div class="stats-row">
+            <div class="stat">
+              <div class="stat-num">4</div>
+              <div class="stat-label">Production<br>Apps</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">12</div>
+              <div class="stat-label">Professional<br>Certificates</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">500+</div>
+              <div class="stat-label">Real Users<br>Served</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects section" id="projects">
+    <div class="container">
+      <div class="section-label">02 / Projects</div>
+      <h2 class="section-title">Things I've<br>shipped.</h2>
+
+      <!-- Project 1 -->
+      <div class="project-card featured" data-index="01">
+        <div class="project-card-inner">
+          <div class="project-meta">
+            <span class="project-num">01</span>
+            <span class="project-status live">● Live</span>
+          </div>
+          <h3 class="project-name">Tournament<br>Manager</h3>
+          <p class="project-desc">A production web app automating small-scale football tournaments — real-time standings, match scheduling, score validation, and live public views. Used annually by hundreds of participants.</p>
+          <div class="project-highlights">
+            <div class="highlight">Real-time rankings & tie-breaking</div>
+            <div class="highlight">Azure Blob Storage for sponsor assets</div>
+            <div class="highlight">Unit + integration test suite</div>
+            <div class="highlight">500+ live users per event</div>
+          </div>
+          <div class="project-tech">
+            <span>Django</span><span>PostgreSQL</span><span>Azure</span><span>Docker</span><span>Testing</span>
+          </div>
+          <div class="project-links">
+            <a href="https://tournamentmanager.onrender.com" target="_blank" class="btn-primary small">Live App ↗</a>
+            <a href="https://github.com/VeselinMar/TournamentManager" target="_blank" class="btn-ghost small">GitHub</a>
+          </div>
+        </div>
+        <div class="project-card-visual">
+          <div class="visual-accent"></div>
+          <div class="screenshot-stack">
+            <img src="https://veselinmar.github.io/static/projects/TM-Leaderboard.png" alt="Tournament Manager Leaderboard" class="screenshot screenshot-back" />
+            <img src="https://veselinmar.github.io/static/projects/TM-Timetable.png" alt="Tournament Manager Timetable" class="screenshot screenshot-front" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card" data-index="02">
+        <div class="project-card-inner">
+          <div class="project-meta">
+            <span class="project-num">02</span>
+            <span class="project-status personal">◆ Self-Hosted</span>
+          </div>
+          <h3 class="project-name">Server<br>Monitor</h3>
+          <p class="project-desc">A self-hosted network health monitor built to document ISP underperformance. Runs automated speed & connectivity tests via cron, visualises results over time, and generates PDF complaint reports. FastAPI backend with full layered architecture and a 40+ test suite.</p>
+          <div class="project-highlights">
+            <div class="highlight">FastAPI + Alembic migrations + layered architecture</div>
+            <div class="highlight">Adaptive cron monitoring (10min when degraded)</div>
+            <div class="highlight">PDF report generation for ISP complaints</div>
+            <div class="highlight">40+ tests across ingest, endpoints, aggregation & PDF</div>
+          </div>
+          <div class="project-tech">
+            <span>FastAPI</span><span>SQLite</span><span>React</span><span>Docker</span><span>Shell</span><span>Alembic</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/VeselinMar/Server-Monitor" target="_blank" class="btn-primary small">GitHub ↗</a>
+          </div>
+        </div>
+        <div class="project-card-visual">
+          <div class="visual-accent accent2"></div>
+          <div class="screenshot-stack">
+            <img src="https://raw.githubusercontent.com/VeselinMar/Server-Monitor/main/docs/screenshots/incident_table.png" alt="Server Monitor Incident Table" class="screenshot screenshot-back" />
+            <img src="https://raw.githubusercontent.com/VeselinMar/Server-Monitor/main/docs/screenshots/speed_chart.png" alt="Server Monitor Speed Chart" class="screenshot screenshot-front" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card" data-index="03">
+        <div class="project-card-inner">
+          <div class="project-meta">
+            <span class="project-num">03</span>
+            <span class="project-status live">● Live</span>
+          </div>
+          <h3 class="project-name">Mom-To-Be</h3>
+          <p class="project-desc">A commissioned, client-facing production blog with multilingual content, TinyMCE editing, CI/CD pipeline, and an evolving cookbook & forum. My first end-to-end client project.</p>
+          <div class="project-highlights">
+            <div class="highlight">Multilingual (django-parler)</div>
+            <div class="highlight">CI/CD auto-deploy pipeline</div>
+            <div class="highlight">Commissioned by real client</div>
+            <div class="highlight">Evolving feature roadmap</div>
+          </div>
+          <div class="project-tech">
+            <span>Django</span><span>PostgreSQL</span><span>Docker</span><span>CI/CD</span><span>TinyMCE</span>
+          </div>
+          <div class="project-links">
+            <a href="https://mom-to-be.at" target="_blank" class="btn-primary small">Live App ↗</a>
+            <a href="https://github.com/VeselinMar/Mama-To-Be" target="_blank" class="btn-ghost small">GitHub</a>
+          </div>
+        </div>
+        <div class="project-card-visual">
+          <div class="visual-accent accent3"></div>
+          <div class="screenshot-stack">
+            <img src="https://veselinmar.github.io/static/projects/MtB-Home-wide.png" alt="Mom-To-Be homepage" class="screenshot screenshot-front single" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="project-card" data-index="04">
+        <div class="project-card-inner">
+          <div class="project-meta">
+            <span class="project-num">04</span>
+            <span class="project-status personal">◆ Self-Hosted</span>
+          </div>
+          <h3 class="project-name">Application<br>Job Tracker</h3>
+          <p class="project-desc">A personal job-search management tool with web scraping, blacklisting, and a React frontend — fully containerized. Built out of real need, used daily.</p>
+          <div class="project-highlights">
+            <div class="highlight">karriere.at job scraper</div>
+            <div class="highlight">Flask + React architecture</div>
+            <div class="highlight">Fully Dockerized</div>
+            <div class="highlight">Active daily use</div>
+          </div>
+          <div class="project-tech">
+            <span>Flask</span><span>SQLAlchemy</span><span>React</span><span>Docker</span><span>BeautifulSoup</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/VeselinMar/job_search_manager" target="_blank" class="btn-primary small">GitHub ↗</a>
+          </div>
+        </div>
+        <div class="project-card-visual">
+          <div class="visual-accent"></div>
+          <div class="screenshot-stack">
+            <img src="https://veselinmar.github.io/static/projects/job_hunter.png" alt="Application Job Tracker" class="screenshot screenshot-front single" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="certifications section" id="certifications">
+    <div class="container">
+      <div class="section-label">03 / Certifications</div>
+      <div class="certs-header">
+        <h2 class="section-title">Credentials.</h2>
+        <p class="certs-subtitle">SoftUni Professional Program · 2023–2025 · <span class="accent">12 certificates</span></p>
+      </div>
+
+      <!-- Diploma featured above columns -->
+      <div class="cert-diploma-row">
+        <div class="cert-diploma-card is-open" data-cert="diploma">
+          <div class="cert-diploma-header">
+            <div class="cert-diploma-left">
+              <span class="cert-item-tag">🎓 Diploma</span>
+              <div class="cert-diploma-title">Software Engineering with Python</div>
+              <div class="cert-item-issuer">SoftUni — Professional Diploma · 2025</div>
+            </div>
+            <button class="cert-toggle" aria-label="Toggle certificate"><span class="cert-toggle-icon">+</span></button>
+          </div>
+          <div class="cert-item-body">
+            <div class="cert-preview">
+              <a href="https://veselinmar.github.io/static/certificates/softunidiplom.pdf" target="_blank" class="cert-preview-link">
+                <img src="https://veselinmar.github.io/static/certificate_thumbnails/softunidiplom.png" alt="Software Engineering Diploma" class="cert-preview-img cert-preview-img--wide" />
+                <div class="cert-preview-overlay"><span>Open PDF ↗</span></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Year axis -->
+      <div class="cert-axis">
+        <div class="cert-axis-year" style="--pos: 0%">2023</div>
+        <div class="cert-axis-year" style="--pos: 42%">2024</div>
+        <div class="cert-axis-year" style="--pos: 80%">2025</div>
+      </div>
+
+      <!-- 3-column parallel timeline -->
+      <div class="cert-columns">
+
+        <!-- COL 1: Python Core -->
+        <div class="cert-col">
+          <div class="cert-col-header">Python Core</div>
+          <div class="cert-col-track">
+            <div class="cert-col-line"></div>
+
+            <div class="cert-node" style="--top: 2%" data-cert="python-basics" data-img="https://veselinmar.github.io/static/certificate_thumbnails/python-basics.png" data-pdf="https://veselinmar.github.io/static/certificates/python-basics.pdf" data-title="Python Basics">
+              <div class="cert-node-dot"></div>
+              <div class="cert-node-card">
+                <div class="cert-node-year">2023</div>
+                <div class="cert-node-name">Python Basics</div>
+                <span class="cert-node-arrow">↗</span>
+              </div>
+            </div>
+
+            <div class="cert-node" style="--top: 18%" data-cert="python-fundamentals" data-img="https://veselinmar.github.io/static/certificate_thumbnails/python-fundamentals.png" data-pdf="https://veselinmar.github.io/static/certificates/python-fundamentals.pdf" data-title="Python Fundamentals">
+              <div class="cert-node-dot"></div>
+              <div class="cert-node-card">
+                <div class="cert-node-year">2023</div>
+                <div class="cert-node-name">Python Fundamentals</div>
+                <span class="cert-node-arrow">↗</span>
+              </div>
+            </div>
+
+            <div class="cert-node" style="--top: 34%" data-cert="python-advanced" data-img="https://veselinmar.github.io/static/certificate_thumbnails/python-advanced.png" data-pdf="https://veselinmar.github.io/static/certificates/python-advanced.pdf" data-title="Python Advanced">
+              <div class="cert-node-dot"></div>
+              <div class="cert-node-card">
+                <div class="cert-node-year">2024</div>
+                <div class="cert-node-name">Python Advanced</div>
+                <span class="cert-node-arrow">↗</span>
+              </div>
+            </div>
+
+            <div class="cert-node" style="--top: 50%" data-cert="python-oop" data-img="https://veselinmar.github.io/static/certificate_thumbnails/python-oop.png" data-pdf="https://veselinmar.github.io/static/certificates/python-oop.pdf" data-title="Python OOP">
+              <div class="cert-node-dot"></div>
+              <div class="cert-node-card">
+                <div class="cert-node-year">2024</div>
+                <div class="cert-node-name">Python OOP</div>
+                <span class="cert-node-arrow">↗</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- COL 2: Backend -->
+        <div class="cert-col">
+          <div class="cert-col-header">Backend Development</div>
+          <div class="cert-col-track">
+            <div class="cert-col-line"></div>
+
+            <div class="cert-node" style="--top: 42%" data-cert="postgresql" data-img="https://veselinmar.github.io/static/certificate_thumbnails/postgresql.png" data-pdf="https://veselinmar.github.io/static/certificates/postgresql.pdf" data-title="PostgreSQL">
+              <div class="cert-node-dot"></div>
+              <div class="cert-node-card">
+                <div class="cert-node-year">2024</div>
+                <div class="cert-node-name">PostgreSQL</div>
+                <span class="cert-node-arrow">↗</span>
+              </div>
+            </div>
+
+            <div class="cert-node" style="--top: 52%" data-cert="python-orm" data-img="https://veselinmar.github.io/static/certificate_thumbnails/python-orm.png" data-pdf="https://veselinmar.github.io/static/certificates/python-orm.pdf" data-title="Python ORM">
+              <div class="cert-node-dot"></div>
+              <div class="cert-node-card">
+                <div class="cert-node-year">2024</div>
+                <div class="cert-node-name">Python ORM</div>
+                <span class="cert-node-arrow">↗</span>
+              </div>
+            </div>
+
+            <div class="cert-node" style="--top: 62%" data-cert="django-basics" data-img="https://veselinmar.github.io/static/certificate_thumbnails/django-basics.png" data-pdf="https://veselinmar.github.io/static/certificates/django-basics.pdf" data-title="Django Basics">
+              <div class="cert-node-dot"></div>
+              <div class="cert-node-card">
+                <div class="cert-node-year">2024</div>
+                <div class="cert-node-name">Django Basics</div>
+                <span class="cert-node-arrow">↗</span>
+              </div>
+            </div>
+
+            <div class="cert-node" style="--top: 72%" data-cert="django-advanced" data-img="https://veselinmar.github.io/static/certificate_thumbnails/django-advanced.png" data-pdf="https://veselinmar.github.io/static/certificates/django-advanced.pdf" data-title="Django Advanced">
+              <div class="cert-node-dot"></div>
+              <div class="cert-node-card">
+                <div class="cert-node-year">2024</div>
+                <div class="cert-node-name">Django Advanced</div>
+                <span class="cert-node-arrow">↗</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- COL 3: Infrastructure & Frontend -->
+        <div class="cert-col">
+          <div class="cert-col-header">Infrastructure &amp; Frontend</div>
+          <div class="cert-col-track">
+            <div class="cert-col-line"></div>
+
+            <div class="cert-node" style="--top: 57%" data-cert="js-frontend" data-img="https://veselinmar.github.io/static/certificate_thumbnails/js-front-end.png" data-pdf="https://veselinmar.github.io/static/certificates/js-front-end.pdf" data-title="JS Frontend">
+              <div class="cert-node-dot"></div>
+              <div class="cert-node-card">
+                <div class="cert-node-year">2024</div>
+                <div class="cert-node-name">JS Frontend</div>
+                <span class="cert-node-arrow">↗</span>
+              </div>
+            </div>
+
+            <div class="cert-node" style="--top: 80%" data-cert="devops" data-img="https://veselinmar.github.io/static/certificate_thumbnails/se-devops.jpeg" data-pdf="https://veselinmar.github.io/static/certificates/devops.pdf" data-title="DevOps">
+              <div class="cert-node-dot"></div>
+              <div class="cert-node-card">
+                <div class="cert-node-year">2025</div>
+                <div class="cert-node-name">DevOps</div>
+                <span class="cert-node-arrow">↗</span>
+              </div>
+            </div>
+
+            <div class="cert-node" style="--top: 90%" data-cert="containers-cloud" data-img="https://veselinmar.github.io/static/certificate_thumbnails/cc.jpeg" data-pdf="https://veselinmar.github.io/static/certificates/containers-cloud.pdf" data-title="Containers &amp; Cloud">
+              <div class="cert-node-dot"></div>
+              <div class="cert-node-card">
+                <div class="cert-node-year">2025</div>
+                <div class="cert-node-name">Containers &amp; Cloud</div>
+                <span class="cert-node-arrow">↗</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div><!-- /cert-columns -->
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <div class="section-label">05 / Contact</div>
+      <div class="contact-inner">
+        <h2 class="section-title contact-title">Let's build<br>something.</h2>
+        <p class="contact-sub">I'm actively looking for a Python backend role in or around Vienna. If you're building something interesting, let's talk.</p>
+        <div class="contact-links">
+          <a href="mailto:veselin.martinov@gmail.com" class="contact-link email">
+            <span class="contact-icon">✉</span>
+            <span>veselin.martinov@gmail.com</span>
+            <span class="arrow">→</span>
+          </a>
+          <a href="https://github.com/VeselinMar" target="_blank" class="contact-link">
+            <span class="contact-icon">⌥</span>
+            <span>github.com/VeselinMar</span>
+            <span class="arrow">→</span>
+          </a>
+          <a href="https://www.linkedin.com/in/veselin-martinov" target="_blank" class="contact-link">
+            <span class="contact-icon">in</span>
+            <span>LinkedIn Profile</span>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+      <span class="nav-logo">VM<span class="accent">.</span></span>
+      <span class="footer-copy">© 2025 Veselin Martinov</span>
+      <span class="footer-made">Built with intention.</span>
+    </div>
+  </footer>
+
+  <!-- CERT MODAL -->
+  <div class="cert-modal" id="certModal">
+    <div class="cert-modal-backdrop"></div>
+    <div class="cert-modal-box">
+      <div class="cert-modal-header">
+        <span class="cert-modal-title" id="certModalTitle"></span>
+        <button class="cert-modal-close" id="certModalClose">✕</button>
+      </div>
+      <a class="cert-modal-img-link" id="certModalLink" target="_blank">
+        <img class="cert-modal-img" id="certModalImg" alt="" />
+        <div class="cert-modal-open">Open PDF ↗</div>
+      </a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

@@ -1,109 +1,185 @@
-// wake up project sites
-const urlsToPing = [
-    "https://mama-to-be.onrender.com",
-    "https://tournamentmanager.onrender.com",
+// ── NAV SCROLL ────────────────────────────────────────────
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+
+// ── HAMBURGER ─────────────────────────────────────────────
+const hamburger  = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+
+hamburger.addEventListener('click', () => {
+  mobileMenu.classList.toggle('open');
+  const spans = hamburger.querySelectorAll('span');
+  if (mobileMenu.classList.contains('open')) {
+    spans[0].style.transform = 'rotate(45deg) translate(4px, 6px)';
+    spans[1].style.opacity   = '0';
+    spans[2].style.transform = 'rotate(-45deg) translate(4px, -6px)';
+  } else {
+    spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+  }
+});
+
+document.querySelectorAll('.mobile-link').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    hamburger.querySelectorAll('span').forEach(s => {
+      s.style.transform = ''; s.style.opacity = '';
+    });
+  });
+});
+
+
+// ── TERMINAL ANIMATION ────────────────────────────────────
+const lines = [
+  { type: 'prompt', text: 'python manage.py runserver' },
+  { type: 'out',    text: 'Watching for file changes...' },
+  { type: 'out',    text: 'Starting development server at http://127.0.0.1:8000/' },
+  { type: 'blank' },
+  { type: 'prompt', text: 'docker-compose up -d' },
+  { type: 'success',text: '✓ db             Running' },
+  { type: 'success',text: '✓ web            Running' },
+  { type: 'success',text: '✓ nginx          Running' },
+  { type: 'blank' },
+  { type: 'prompt', text: 'python manage.py test' },
+  { type: 'out',    text: 'Running 42 tests...' },
+  { type: 'success',text: 'OK (42 tests, 0 failures)' },
+  { type: 'blank' },
+  { type: 'comment',text: '# Ready to ship. 🚀' },
 ];
 
-// ping function
-window.addEventListener("load", () => {
+const terminal = document.getElementById('terminal');
+let lineIndex = 0;
+
+function typeNextLine() {
+  if (lineIndex >= lines.length) {
     setTimeout(() => {
-        urlsToPing.forEach(url => {
-            fetch(url, {mode: "no-cors"})
-            .catch(err => console.log("ping failed", url, err));
-        });
-    }, 1000);
-});
+      terminal.innerHTML = '';
+      lineIndex = 0;
+      setTimeout(typeNextLine, 800);
+    }, 3000);
+    return;
+  }
 
-// menu expand function
-function toggleMenu() {
-    const menu = document.querySelector(".menu-links");
-    const icon = document.querySelector(".hamburger-icon");
-    menu.classList.toggle("open")
-    icon.classList.toggle("open")
+  const line = lines[lineIndex];
+  lineIndex++;
+
+  if (line.type === 'blank') {
+    terminal.insertAdjacentHTML('beforeend', '<span class="t-line">&nbsp;</span>');
+    setTimeout(typeNextLine, 100);
+    return;
+  }
+
+  const span = document.createElement('span');
+  span.className = 't-line';
+
+  let html = '';
+  if (line.type === 'prompt')  html = `<span class="t-prompt">→ </span><span class="t-cmd">${line.text}</span>`;
+  if (line.type === 'out')     html = `<span class="t-out">  ${line.text}</span>`;
+  if (line.type === 'success') html = `<span class="t-success">  ${line.text}</span>`;
+  if (line.type === 'comment') html = `<span class="t-comment">  ${line.text}</span>`;
+
+  span.innerHTML = html;
+  terminal.appendChild(span);
+  terminal.scrollTop = terminal.scrollHeight;
+
+  const delay = line.type === 'prompt' ? 900 : 200;
+  setTimeout(typeNextLine, delay);
 }
 
-// shuffling icons function
+setTimeout(typeNextLine, 1200);
 
-function iconShuffle(containerSelector) {
-    const container = document.querySelector(containerSelector);
-    if (!container) return; // Ensure container exists
-    const icons = container.querySelectorAll(".icon");
-    let animationFrames = [];
 
-    // function start animation
-    function startAnimation() {
-    icons.forEach((icon, index) => {
-        let angle = Math.random() * Math.PI * 2; // Random starting angle
-        const speed = 0.01 + Math.random() * 0.03; // Slightly different speeds for each icon
-        const radius = Math.random() * (12 - 8) + 8; // Orbit size variation
-        const waveAmplitude = Math.random() * (15 - 10) + 10; // Left-right sway range
+// ── INTERSECTION OBSERVER (fade-in + skill bars) ──────────
+const fadeEls = document.querySelectorAll('.fade-in');
+const barFills = document.querySelectorAll('.bar-fill');
 
-        function animate() {
-            angle += speed;
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
 
-            const xOffset = Math.cos(angle) * radius + Math.sin(angle * 1.5) * waveAmplitude; // Orbit + Wave
-            const yOffset = Math.sin(angle) * radius; // Circular motion
+fadeEls.forEach(el => observer.observe(el));
 
-            icon.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('animated');
+      barObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
 
-            animationFrames[index] = requestAnimationFrame(animate);
+barFills.forEach(el => barObserver.observe(el));
+
+
+// ── FADE-IN CLASSES ON SCROLL ELEMENTS ───────────────────
+document.querySelectorAll('.project-card, .cert-card, .contact-link, .about-grid').forEach(el => {
+  el.classList.add('fade-in');
+  observer.observe(el);
+});
+
+
+// ── CERT MODAL ────────────────────────────────────────────
+const certModal     = document.getElementById('certModal');
+const certModalImg  = document.getElementById('certModalImg');
+const certModalLink = document.getElementById('certModalLink');
+const certModalTitle= document.getElementById('certModalTitle');
+const certModalClose= document.getElementById('certModalClose');
+
+function openCertModal(img, pdf, title) {
+  certModalImg.src       = img;
+  certModalImg.alt       = title;
+  certModalLink.href     = pdf;
+  certModalTitle.textContent = title;
+  certModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeCertModal() {
+  certModal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.cert-node').forEach(node => {
+  node.querySelector('.cert-node-card').addEventListener('click', () => {
+    openCertModal(
+      node.dataset.img,
+      node.dataset.pdf,
+      node.dataset.title
+    );
+  });
+});
+
+certModalClose.addEventListener('click', closeCertModal);
+certModal.querySelector('.cert-modal-backdrop').addEventListener('click', closeCertModal);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCertModal(); });
+
+// Diploma toggle
+const diplomaCard = document.querySelector('.cert-diploma-card');
+if (diplomaCard) {
+  diplomaCard.querySelector('.cert-diploma-header').addEventListener('click', () => {
+    diplomaCard.classList.toggle('is-open');
+  });
+}
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+const sectionObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => {
+        link.style.opacity = '0.6';
+        if (link.getAttribute('href') === '#' + entry.target.id) {
+          link.style.opacity = '1';
         }
-
-        animate();
-    });
-}
-
-    // function stop animation
-    function stopAnimation() {
-        animationFrames.forEach(frameId => cancelAnimationFrame(frameId));
-        animationFrames = []; // Clear stored frames
-        icons.forEach(icon => {
-            icon.style.transition = "transform 0.3s ease-out";
-            icon.style.transform = "translateY(0)"; // Reset position
-        });
+      });
     }
+  });
+}, { threshold: 0.4 });
 
-    container.addEventListener("mouseenter", startAnimation);
-    container.addEventListener("mouseleave", stopAnimation);
-}
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    iconShuffle(".shuffle-icons"); // Apply only to specific containers
-});
-
-// horizontal scroll certificates
-document.addEventListener("DOMContentLoaded", function () {
-    const carousel = document.querySelector(".experience-details-container .carousel");
-    const prevBtn = document.querySelector(".experience-details-container .carousel-prev");
-    const nextBtn = document.querySelector(".experience-details-container .carousel-next");
-
-    let scrollAmount = 0;
-    let articleWidth = document.querySelector(".experience-details-container .carousel article").offsetWidth + 32;
-
-    nextBtn.addEventListener("click", function () {
-        carousel.scrollBy({ left: articleWidth, behavior: "smooth" });
-    });
-
-    prevBtn.addEventListener("click", function () {
-        carousel.scrollBy({ left: -articleWidth, behavior: "smooth" });
-    });
-});
-
-
-// blinking more projects button
-document.addEventListener("DOMContentLoaded", function() {
-    const button = document.querySelector('.more-projects-link .btn');
-
-    if (button) {
-        let isOriginalColor = true;
-        setInterval(() => {
-            if (isOriginalColor) {
-                button.style.backgroundColor = 'crimson';
-            } else {
-                button.style.backgroundColor = 'darkblue';
-            }
-            isOriginalColor = !isOriginalColor;
-        }, 1000);
-    }
-});
+sections.forEach(s => sectionObserver.observe(s));
