@@ -5,14 +5,38 @@
 // ── SCREENSHOT CLICK TO FOCUS ─────────────────────────────
 document.querySelectorAll('.screenshot-stack').forEach(stack => {
   const shots = stack.querySelectorAll('.screenshot');
+  const panel = stack.closest('.project-card-visual');
+  const card  = stack.closest('.project-card');
+
   shots.forEach(img => {
-    img.addEventListener('click', () => {
+    img.addEventListener('click', (e) => {
+      e.stopPropagation();
       const isAlreadyFocused = img.classList.contains('is-focused');
-      // remove focused from all in this stack
-      shots.forEach(s => s.classList.remove('is-focused'));
-      // toggle — click focused image again to unfocus
-      if (!isAlreadyFocused) img.classList.add('is-focused');
+
+      // close ALL focused screenshots across all cards
+      document.querySelectorAll('.screenshot.is-focused').forEach(s => {
+        s.classList.remove('is-focused');
+      });
+      document.querySelectorAll('.project-card-visual, .project-card').forEach(el => {
+        el.style.overflow = '';
+      });
+
+      if (!isAlreadyFocused) {
+        img.classList.add('is-focused');
+        if (panel) panel.style.overflow = 'visible';
+        if (card)  card.style.overflow  = 'visible';
+      }
     });
+  });
+});
+
+// clicking outside closes all
+document.addEventListener('click', () => {
+  document.querySelectorAll('.screenshot.is-focused').forEach(s => {
+    s.classList.remove('is-focused');
+  });
+  document.querySelectorAll('.project-card-visual, .project-card').forEach(el => {
+    el.style.overflow = '';
   });
 });
 
@@ -64,7 +88,7 @@ const lines = [
   { type: 'out',    text: 'Running 42 tests...' },
   { type: 'success',text: 'OK (42 tests, 0 failures)' },
   { type: 'blank' },
-  { type: 'comment',text: '# Ready to ship. 🚀' },
+  { type: 'comment',text: '# Ready to ship. ' },
 ];
 
 const terminal = document.getElementById('terminal');
