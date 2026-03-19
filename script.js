@@ -1,4 +1,22 @@
-// ── NAV SCROLL ────────────────────────────────────────────
+/* =========================================================
+   VESELIN MARTINOV PORTFOLIO — script.js
+   ========================================================= */
+
+// ── SCREENSHOT CLICK TO FOCUS ─────────────────────────────
+document.querySelectorAll('.screenshot-stack').forEach(stack => {
+  const shots = stack.querySelectorAll('.screenshot');
+  shots.forEach(img => {
+    img.addEventListener('click', () => {
+      const isAlreadyFocused = img.classList.contains('is-focused');
+      // remove focused from all in this stack
+      shots.forEach(s => s.classList.remove('is-focused'));
+      // toggle — click focused image again to unfocus
+      if (!isAlreadyFocused) img.classList.add('is-focused');
+    });
+  });
+});
+
+
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 40);
