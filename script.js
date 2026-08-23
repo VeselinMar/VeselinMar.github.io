@@ -2,43 +2,582 @@
    VESELIN MARTINOV PORTFOLIO — script.js
    ========================================================= */
 
-// ── SCREENSHOT CLICK TO FOCUS ─────────────────────────────
-document.querySelectorAll('.screenshot-stack').forEach(stack => {
-  const shots = stack.querySelectorAll('.screenshot');
-  const panel = stack.closest('.project-card-visual');
-  const card  = stack.closest('.project-card');
+/* ─────────────────────────────────────────────
+   PROJECT GALLERIES
+   ───────────────────────────────────────────── */
 
-  shots.forEach(img => {
-    img.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isAlreadyFocused = img.classList.contains('is-focused');
+const fullscreen =
+  document.getElementById('imageFullscreen');
 
-      // close ALL focused screenshots across all cards
-      document.querySelectorAll('.screenshot.is-focused').forEach(s => {
-        s.classList.remove('is-focused');
-      });
-      document.querySelectorAll('.project-card-visual, .project-card').forEach(el => {
-        el.style.overflow = '';
-      });
+const fullscreenImage =
+  document.getElementById('fullscreenImage');
 
-      if (!isAlreadyFocused) {
-        img.classList.add('is-focused');
-        if (panel) panel.style.overflow = 'visible';
-        if (card)  card.style.overflow  = 'visible';
-      }
+const fullscreenStage =
+  document.getElementById('fullscreenStage');
+
+const fullscreenPrev =
+  document.getElementById('fullscreenPrev');
+
+const fullscreenNext =
+  document.getElementById('fullscreenNext');
+
+const fullscreenClose =
+  document.getElementById('fullscreenClose');
+
+const fullscreenCurrent =
+  document.getElementById('fullscreenCurrent');
+
+const fullscreenTotal =
+  document.getElementById('fullscreenTotal');
+
+const zoomIn =
+  document.getElementById('zoomIn');
+
+const zoomOut =
+  document.getElementById('zoomOut');
+
+const zoomLevel =
+  document.getElementById('zoomLevel');
+
+
+let activeGallery = null;
+let activeImages = [];
+let activeIndex = 0;
+
+let zoom = 1;
+
+let panX = 0;
+let panY = 0;
+
+let isDragging = false;
+
+let dragStartX = 0;
+let dragStartY = 0;
+
+let startPanX = 0;
+let startPanY = 0;
+
+
+/* ─────────────────────────────────────────────
+   PROJECT GALLERIES
+   ───────────────────────────────────────────── */
+
+document.querySelectorAll('.project-gallery').forEach(gallery => {
+
+  const mainImage =
+    gallery.querySelector('.gallery-main-image');
+
+  const thumbnails =
+    [...gallery.querySelectorAll('.gallery-thumb')];
+
+  const previous =
+    gallery.querySelector('.gallery-prev');
+
+  const next =
+    gallery.querySelector('.gallery-next');
+
+  const currentCounter =
+    gallery.querySelector('.gallery-current');
+
+  const totalCounter =
+    gallery.querySelector('.gallery-total');
+
+
+  let currentIndex = 0;
+
+
+  function showImage(index) {
+
+    if (index < 0) {
+      index = thumbnails.length - 1;
+    }
+
+    if (index >= thumbnails.length) {
+      index = 0;
+    }
+
+    currentIndex = index;
+
+    const thumbnail =
+      thumbnails[index];
+
+    mainImage.src =
+      thumbnail.dataset.image;
+
+    mainImage.alt =
+      thumbnail.dataset.alt;
+
+
+    thumbnails.forEach((thumb, i) => {
+
+      thumb.classList.toggle(
+        'is-active',
+        i === index
+      );
+
     });
+
+
+    currentCounter.textContent =
+      String(index + 1).padStart(2, '0');
+
+    totalCounter.textContent =
+      String(thumbnails.length).padStart(2, '0');
+
+
+    thumbnail.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'nearest'
+    });
+  }
+
+
+  thumbnails.forEach((thumbnail, index) => {
+
+    thumbnail.addEventListener('click', () => {
+      showImage(index);
+    });
+
   });
+
+
+  previous.addEventListener('click', () => {
+    showImage(currentIndex - 1);
+  });
+
+
+  next.addEventListener('click', () => {
+    showImage(currentIndex + 1);
+  });
+
+
+  /* ─────────────────────────────────────────
+     OPEN FULLSCREEN
+     ───────────────────────────────────────── */
+
+  mainImage.addEventListener('click', async () => {
+
+    activeGallery = gallery;
+
+    activeImages =
+      thumbnails.map(thumbnail => ({
+        src: thumbnail.dataset.image,
+        alt: thumbnail.dataset.alt
+      }));
+
+    activeIndex = currentIndex;
+
+    openFullscreen();
+
+  });
+
+
+  showImage(0);
+
 });
 
-// clicking outside closes all
-document.addEventListener('click', () => {
-  document.querySelectorAll('.screenshot.is-focused').forEach(s => {
-    s.classList.remove('is-focused');
-  });
-  document.querySelectorAll('.project-card-visual, .project-card').forEach(el => {
-    el.style.overflow = '';
-  });
-});
+/* ─────────────────────────────────────────────
+   FULLSCREEN
+   ───────────────────────────────────────────── */
+
+async function openFullscreen() {
+
+  zoom = 1;
+
+  panX = 0;
+  panY = 0;
+
+  updateFullscreenImage();
+
+  fullscreen.setAttribute(
+    'aria-hidden',
+    'false'
+  );
+
+
+  try {
+
+    await fullscreen.requestFullscreen();
+
+  } catch (error) {
+
+    console.error(
+      'Fullscreen unavailable:',
+      error
+    );
+
+  }
+
+}
+
+
+function updateFullscreenImage() {
+
+  const image =
+    activeImages[activeIndex];
+
+  if (!image) return;
+
+  fullscreenImage.src =
+    image.src;
+
+  fullscreenImage.alt =
+    image.alt;
+
+
+  fullscreenCurrent.textContent =
+    String(activeIndex + 1).padStart(2, '0');
+
+  fullscreenTotal.textContent =
+    String(activeImages.length).padStart(2, '0');
+
+
+  resetZoom();
+
+}
+
+
+function showFullscreenImage(index) {
+
+  if (index < 0) {
+    index = activeImages.length - 1;
+  }
+
+  if (index >= activeImages.length) {
+    index = 0;
+  }
+
+  activeIndex = index;
+
+  updateFullscreenImage();
+
+}
+
+fullscreenPrev.addEventListener(
+  'click',
+  event => {
+
+    event.stopPropagation();
+
+    showFullscreenImage(
+      activeIndex - 1
+    );
+
+  }
+);
+
+
+fullscreenNext.addEventListener(
+  'click',
+  event => {
+
+    event.stopPropagation();
+
+    showFullscreenImage(
+      activeIndex + 1
+    );
+
+  }
+);
+
+/* ─────────────────────────────────────────────
+   ZOOM
+   ───────────────────────────────────────────── */
+
+function updateZoom() {
+
+  fullscreenImage.style.transform =
+    `translate(${panX}px, ${panY}px) scale(${zoom})`;
+
+  zoomLevel.textContent =
+    `${Math.round(zoom * 100)}%`;
+}
+
+
+function resetZoom() {
+
+  zoom = 1;
+
+  panX = 0;
+  panY = 0;
+
+  updateZoom();
+}
+
+
+function changeZoom(amount) {
+
+  zoom += amount;
+
+  zoom =
+    Math.max(
+      1,
+      Math.min(4, zoom)
+    );
+
+  if (zoom === 1) {
+
+    panX = 0;
+    panY = 0;
+
+  }
+
+  updateZoom();
+}
+
+
+zoomIn.addEventListener(
+  'click',
+  event => {
+
+    event.stopPropagation();
+
+    changeZoom(0.25);
+
+  }
+);
+
+
+zoomOut.addEventListener(
+  'click',
+  event => {
+
+    event.stopPropagation();
+
+    changeZoom(-0.25);
+
+  }
+);
+
+fullscreenStage.addEventListener(
+  'wheel',
+  event => {
+
+    event.preventDefault();
+
+    const amount =
+      event.deltaY < 0
+        ? 0.15
+        : -0.15;
+
+    changeZoom(amount);
+
+  },
+  { passive: false }
+);
+
+fullscreenImage.addEventListener(
+  'dblclick',
+  event => {
+
+    event.preventDefault();
+
+    if (zoom === 1) {
+
+      zoom = 2;
+
+    } else {
+
+      zoom = 1;
+
+      panX = 0;
+      panY = 0;
+
+    }
+
+    updateZoom();
+
+  }
+);
+
+fullscreenImage.addEventListener(
+  'mousedown',
+  event => {
+
+    if (zoom <= 1) return;
+
+    isDragging = true;
+
+    fullscreenStage.classList.add(
+      'is-dragging'
+    );
+
+    dragStartX = event.clientX;
+    dragStartY = event.clientY;
+
+    startPanX = panX;
+    startPanY = panY;
+
+  }
+);
+
+
+window.addEventListener(
+  'mousemove',
+  event => {
+
+    if (!isDragging) return;
+
+    panX =
+      startPanX +
+      (event.clientX - dragStartX);
+
+    panY =
+      startPanY +
+      (event.clientY - dragStartY);
+
+    updateZoom();
+
+  }
+);
+
+
+window.addEventListener(
+  'mouseup',
+  () => {
+
+    isDragging = false;
+
+    fullscreenStage.classList.remove(
+      'is-dragging'
+    );
+
+  }
+);
+
+document.addEventListener(
+  'keydown',
+  event => {
+
+    if (
+      !document.fullscreenElement ||
+      document.fullscreenElement !== fullscreen
+    ) {
+      return;
+    }
+
+
+    switch (event.key) {
+
+      case 'ArrowLeft':
+
+        event.preventDefault();
+
+        showFullscreenImage(
+          activeIndex - 1
+        );
+
+        break;
+
+
+      case 'ArrowRight':
+
+        event.preventDefault();
+
+        showFullscreenImage(
+          activeIndex + 1
+        );
+
+        break;
+
+
+      case '+':
+
+      case '=':
+
+        event.preventDefault();
+
+        changeZoom(0.25);
+
+        break;
+
+
+      case '-':
+
+      case '_':
+
+        event.preventDefault();
+
+        changeZoom(-0.25);
+
+        break;
+
+
+      case '0':
+
+        event.preventDefault();
+
+        resetZoom();
+
+        break;
+
+    }
+
+  }
+);
+
+fullscreenClose.addEventListener(
+  'click',
+  event => {
+
+    event.stopPropagation();
+
+    closeFullscreen();
+
+  }
+);
+
+
+async function closeFullscreen() {
+
+  if (document.fullscreenElement) {
+
+    try {
+
+      await document.exitFullscreen();
+
+    } catch (error) {
+
+      console.error(
+        'Could not exit fullscreen:',
+        error
+      );
+
+    }
+
+  }
+
+}
+
+document.addEventListener(
+  'fullscreenchange',
+  () => {
+
+    const isFullscreen =
+      document.fullscreenElement === fullscreen;
+
+
+    fullscreen.setAttribute(
+      'aria-hidden',
+      String(!isFullscreen)
+    );
+
+
+    if (!isFullscreen) {
+
+      activeGallery = null;
+
+      activeImages = [];
+
+      activeIndex = 0;
+
+      resetZoom();
+
+    }
+
+  }
+);
 
 
 const nav = document.getElementById('nav');
