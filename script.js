@@ -124,12 +124,6 @@ document.querySelectorAll('.project-gallery').forEach(gallery => {
     totalCounter.textContent =
       String(thumbnails.length).padStart(2, '0');
 
-
-    thumbnail.scrollIntoView({
-      behavior: 'smooth',
-      block: 'nearest',
-      inline: 'nearest'
-    });
   }
 
 
